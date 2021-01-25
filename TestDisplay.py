@@ -1,5 +1,4 @@
-
-#
+# Stupid Testfile
 from D7Segment import D7Display
 import time
 
@@ -28,6 +27,4 @@ for i in range(0,22):
   time.sleep(.5)
 #  display.clear_display()
 #  time.sleep(1)
-
-
 

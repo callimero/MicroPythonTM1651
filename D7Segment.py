@@ -6,6 +6,7 @@ Copyright (C) 2020 Koen Vervloesem (battery graph versrion)
 SPDX-License-Identifier: MIT
 Based on:
 https://github.com/koenvervloesem/rpi-mini-battery-display/blob/master/rpi_mini_battery_display/__main__.py
+https://github.com/coopzone-dc/GotekLEDC68
 """
 
 from time import sleep
@@ -13,11 +14,12 @@ from machine import Pin
 
 # 0 1 2 3 4 5 6 7 8 9
 # A B C D E F
-#   ? ? ? ? ?
+#   o   _
+#     o   _ -
 CHAR_ARRAY = [
   0x3f, 0x06, 0x5b, 0x4f, 0x66, 0x6d, 0x7d, 0x07, 0x7f, 0x6f,
   0x77, 0x7c, 0x39, 0x5e, 0x79, 0x71,
-  0x00, 0x63, 0x5c, 0x01, 0x40, 0x08
+  0x00, 0x63, 0x5c, 0x01, 0x40, 0x08, 0x49
 ] 
 
 # The TM1651's maximum frequency is 500 kHz with a 50% duty cycle.
@@ -189,9 +191,6 @@ class D7Display:
        
     #class GeneralError(Exception):
     #  print("OHoho!!!!!!!!!!!!!!!!!!!!!!! ",Exception)
-
-        
-
 
 
 
