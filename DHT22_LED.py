@@ -1,4 +1,6 @@
-# With Gotek LED
+# ESP32 Micropython Demo
+# Temperature from DHT22 on "Gotek" LED Display
+# Using my hacky TM1651 Library
 
 import dht
 import machine
@@ -33,6 +35,7 @@ while 1:
   led_humid(d.humidity())
   
   time.sleep(5)
+
 
 
 

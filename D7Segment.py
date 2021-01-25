@@ -1,7 +1,8 @@
 """Micropython Library for the 3 7-seqment LED display (aka "Gotek" Display) using the TM1651 chip.
 
+Based and adapted from Koen Vervloesem Raspberry Pi Version
 Copyright (C) 2020 Koen Vervloesem (battery graph versrion)
-2021 Carsten Wartmann Changes for LED 7-seqments
+Copyright (C) 2021 Carsten Wartmann Changes for LED 7-segments, Micropyhton version
 
 SPDX-License-Identifier: MIT
 Based on:
@@ -14,8 +15,8 @@ from machine import Pin
 
 # 0 1 2 3 4 5 6 7 8 9
 # A B C D E F
-#   o   _
-#     o   _ -
+#   o   _    _
+#     o   _ -=
 CHAR_ARRAY = [
   0x3f, 0x06, 0x5b, 0x4f, 0x66, 0x6d, 0x7d, 0x07, 0x7f, 0x6f,
   0x77, 0x7c, 0x39, 0x5e, 0x79, 0x71,
@@ -28,7 +29,7 @@ TM1651_CYCLE = 0.000050  # 50 microseconds
 
 
 class Command():
-     # Data commands
+     # Data commands fro the chip
     ADDR_FIXED = 0x44  # Set fixed address mode
     # Display control commands
     DISPLAY_OFF = 0x80  # Set display off
@@ -56,8 +57,8 @@ class D7Display:
 
         # If the TM1651 hasn't returned an ACK,
         # assume that no LED controller is connected on these pins.
-        #if not ack:
-        #    raise GeneralError(clock_pin, data_pin)
+        if not ack:
+            sys.exit(retval=0)
         
         
     def set_brightness(self, brightness):
@@ -191,6 +192,7 @@ class D7Display:
        
     #class GeneralError(Exception):
     #  print("OHoho!!!!!!!!!!!!!!!!!!!!!!! ",Exception)
+
 
 
 
