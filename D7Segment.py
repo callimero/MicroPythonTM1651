@@ -4,6 +4,8 @@ Based and adapted from Koen Vervloesem Raspberry Pi Version
 Copyright (C) 2020 Koen Vervloesem (battery graph versrion)
 Copyright (C) 2021 Carsten Wartmann Changes for LED 7-segments, Micropyhton version
 
+Arduino Version: Derek Cooper, Fred.Chu and Detlef Giessmann
+
 SPDX-License-Identifier: MIT
 Based on:
 https://github.com/koenvervloesem/rpi-mini-battery-display/blob/master/rpi_mini_battery_display/__main__.py
@@ -12,6 +14,7 @@ https://github.com/coopzone-dc/GotekLEDC68
 
 from time import sleep
 from machine import Pin
+import sys
 
 # 0 1 2 3 4 5 6 7 8 9
 # A B C D E F
@@ -54,11 +57,12 @@ class D7Display:
         self.set_brightness(2)
         ack = self.clear_display()
 #        print("ACK: ",ack)
-
+        
+        # need to find error check
         # If the TM1651 hasn't returned an ACK,
         # assume that no LED controller is connected on these pins.
-        if not ack:
-            sys.exit(retval=0)
+        #if not ack:
+        #    sys.exit(0)
         
         
     def set_brightness(self, brightness):
@@ -192,6 +196,8 @@ class D7Display:
        
     #class GeneralError(Exception):
     #  print("OHoho!!!!!!!!!!!!!!!!!!!!!!! ",Exception)
+
+
 
 
 
